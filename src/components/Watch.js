@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { closeMenu } from "../utils/appSlice";
 import { useSearchParams } from "react-router-dom";
+import VideoInfo from "./VideoInfo";
+
 const Watch = () => {
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
@@ -9,6 +11,7 @@ const Watch = () => {
   useEffect(() => {
     dispatch(closeMenu());
   }, []);
+
   return (
     <div>
       {/* <h1>This is watch component</h1> */}
@@ -21,6 +24,7 @@ const Watch = () => {
         referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen
       ></iframe>
+      <VideoInfo/>
     </div>
   );
 };
