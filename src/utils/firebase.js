@@ -7,7 +7,7 @@ import { getAnalytics } from "firebase/analytics";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDzu9BoUF0u0AcZQL_RR7AEVfENClR-nSE",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: "videostreamingapp-f534c.firebaseapp.com",
   projectId: "videostreamingapp-f534c",
   storageBucket: "videostreamingapp-f534c.appspot.com",
