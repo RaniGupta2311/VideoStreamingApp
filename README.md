@@ -16,4 +16,10 @@
 - / useParams
 - ? useSearchParams
 - iframe from embeded code of youtube for watch page
+- youtube search suggestions
+- debouncing in search suggestions
+- useState variable to handle searchSuggestions result when input input in focus otherwise hide it
+- Caching the result for search suggestions
+- LRU cache
+- N level commenting
 
