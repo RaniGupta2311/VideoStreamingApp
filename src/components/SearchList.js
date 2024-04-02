@@ -3,14 +3,16 @@ import VideoCard,{AdVideoCard} from "./VideoCard";
 import SearchVideoCard from "./SearchVideoCard";
 import { Link } from "react-router-dom";
 import { YOUTUBE_SEARCH_BY_QUERY_API } from "../utils/constants";
+import { useSelector } from "react-redux";
 const SearchList=()=>{
+    const inputSearchQuery=useSelector(store=>store.app.isSearchQuery.isSearchQueryResult)
     const [videos,setVideos]=useState([]);
     useEffect(()=>{
         getVideos();
     },[])
 
     const getVideos=async ()=>{
-        const data=await fetch(YOUTUBE_SEARCH_BY_QUERY_API);
+        const data=await fetch(YOUTUBE_SEARCH_BY_QUERY_API+inputSearchQuery);
         const jsonData=await data.json();
         console.log(jsonData.items);
         setVideos(jsonData.items)

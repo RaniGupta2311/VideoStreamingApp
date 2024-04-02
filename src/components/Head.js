@@ -3,7 +3,7 @@ import { FaCircleUser } from "react-icons/fa6";
 import { YOUTUBE_IMG_URL, YOUTUBE_SEARCH_API } from "../utils/constants";
 import { IoSearchOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleMenu } from "../utils/appSlice";
+import { toggleMenu, toggleSearchQuery } from "../utils/appSlice";
 import {useState,useEffect} from "react";
 import { cacheResults } from "../utils/searchSlice";
 import { useNavigate } from "react-router-dom";
@@ -23,6 +23,15 @@ const Head=()=>{
     const searchListHandler=()=>{
         // navigate("/search?q="+searchQuery);
         console.log("navigate To ",searchQuery);
+        if(searchQuery){
+            dispatch(toggleSearchQuery({isSearchQueryFlag:true,
+                isSearchQueryResult:searchQuery}))
+        }
+        else{
+            dispatch(toggleSearchQuery({isSearchQueryFlag:false,
+                isSearchQueryResult:""}))
+        }
+        
 
     }
     useEffect(()=>{

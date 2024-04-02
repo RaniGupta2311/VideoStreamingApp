@@ -4,6 +4,10 @@ const appSlice=createSlice({
     name:"app",
     initialState:{
         isMenuOpen:true,
+        isSearchQuery:{
+            isSearchQueryFlag:false,
+            isSearchQueryResult:""
+        },
     },
     reducers:{
         toggleMenu:(state,action)=>{
@@ -11,8 +15,11 @@ const appSlice=createSlice({
         },
         closeMenu:(state,action)=>{
             state.isMenuOpen=false
+        },
+        toggleSearchQuery:(state,action)=>{
+            state.isSearchQuery=action.payload
         }
     }
 })
-export const {toggleMenu,closeMenu}=appSlice.actions;
+export const {toggleMenu,closeMenu,toggleSearchQuery}=appSlice.actions;
 export default appSlice.reducer;
