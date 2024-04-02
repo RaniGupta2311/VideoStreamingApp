@@ -11,7 +11,7 @@ const VideoContainer=()=>{
     const getVideos=async ()=>{
         const data=await fetch(YOUTUBE_VIDEOS_API);
         const jsonData=await data.json();
-        // console.log(jsonData.items);
+        console.log(jsonData.items);
         setVideos(jsonData.items)
     }
 
@@ -19,7 +19,7 @@ const VideoContainer=()=>{
         <div className="w-[100%] absolute top-16 left-0 h-[145%] overflow-y-scroll">
         <div className="flex flex-wrap justify-center ">
         {/* {videos[0] && <AdVideoCard info={videos[0]}/>} */}
-            {(videos) && videos.map((video)=><Link to={"/watch?v="+video.id}  key={video.id}>
+            {(videos) && videos.map((video)=><Link to={"/watch?v="+video.id} key={video.id}>
             <VideoCard info={video}/>
             </Link>)}
         </div>

@@ -6,16 +6,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import {useState,useEffect} from "react";
 import { cacheResults } from "../utils/searchSlice";
+import { useNavigate } from "react-router-dom";
 
 const Head=()=>{
     const dispatch=useDispatch();
     const searchCache=useSelector(store=>store.search)
+    // const navigate=useNavigate();
+
     const [searchQuery,setSearchQuery]=useState("");
     const [suggestions,setSuggestions]=useState([]);
     const [showSggestions,setShowSuggestions]=useState(false)
 
     const toggleMenuHandler=()=>{
         dispatch(toggleMenu());
+    }
+    const searchListHandler=()=>{
+        // navigate("/search?q="+searchQuery);
+        console.log("navigate To ",searchQuery);
+
     }
     useEffect(()=>{
         // console.log(searchQuery);
@@ -40,10 +48,10 @@ const Head=()=>{
     },[searchQuery])
 
     const getSearchSuggestions=async()=>{
-        console.log("API CALL -",searchQuery)
+        // console.log("API CALL -",searchQuery)
         const data=await fetch(YOUTUBE_SEARCH_API+searchQuery);
         const jsonData=await data.json();
-        console.log(jsonData[1]);
+        // console.log(jsonData[1]);
         setSuggestions(jsonData[1]);
         dispatch(cacheResults({
             [searchQuery]:jsonData[1]
@@ -71,11 +79,12 @@ const Head=()=>{
                     onBlur={()=>setShowSuggestions(false)}
 
                 />
-                <button className="border border-gray-400 px-5 py-[10px] rounded-r-full bg-gray-100"><IoSearchOutline size={20}/></button>
+                <button className="border border-gray-400 px-5 py-[10px] rounded-r-full bg-gray-100"
+                onClick={searchListHandler}><IoSearchOutline size={20}/></button>
                 </div>
                 {showSggestions && <div className="absolute z-50 bg-white py-2 px-5 w-[59%] sm:w-[50%] md:w-[48%] lg:w-[52%]  shadow-lg rounded-b-lg border border-gray-100">
                     <ul>
-                        {suggestions.map((sugg)=><li className="py-2 px-3 hover:bg-gray-100">{sugg}</li>)}
+                        {suggestions.map((sugg,index)=><li key={index} className="py-2 px-3 hover:bg-gray-100">{sugg}</li>)}
                     </ul>
                 </div>}
             </div>

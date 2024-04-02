@@ -9,7 +9,7 @@ const VideoInfo=()=>{
     const getVideoInfo=async ()=>{
         const data=await fetch(YOUTUBE_VIDEO_INFOBYID_API+searchParams.get("v"))
         const jsonData=await data.json();
-        console.log(jsonData.items);
+        // console.log(jsonData.items);
         setVideoInfo(jsonData.items);
       }
      useEffect(()=>{

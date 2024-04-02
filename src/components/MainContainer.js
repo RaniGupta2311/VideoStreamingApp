@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import ButtonList from "./ButtonList";
 import VideoContainer from "./VideoContainer";
+import SearchList from "./SearchList";
 
 const MainContainer=()=>{
     const isMenuOpen=useSelector(store=>store.app.isMenuOpen)
@@ -9,6 +10,7 @@ const MainContainer=()=>{
             {/* <h1>MainContainer Component</h1> */}
             <ButtonList/>
             <VideoContainer/>
+            {/* <SearchList/> */}
         </div>
     )
 }

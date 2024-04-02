@@ -3,11 +3,12 @@ import { useDispatch } from "react-redux";
 import { closeMenu } from "../utils/appSlice";
 import { useSearchParams } from "react-router-dom";
 import VideoInfo from "./VideoInfo";
+import CommentsContainer from "./CommentsContainer";
 
 const Watch = () => {
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
-  console.log(searchParams.get("v"));
+  // console.log(searchParams.get("v"));
   useEffect(() => {
     dispatch(closeMenu());
   }, []);
@@ -25,6 +26,7 @@ const Watch = () => {
         allowFullScreen
       ></iframe>
       <VideoInfo/>
+      <CommentsContainer/>
     </div>
   );
 };
