@@ -3,7 +3,7 @@ import Body from "./components/Body";
 import Head from "./components/Head"
 import store from "./utils/store";
 import Watch from "./components/Watch";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
 import MainContainer from "./components/MainContainer";
 function App() {
   return (
@@ -11,29 +11,15 @@ function App() {
      {/* <h1 className="bg-red-700">Hello</h1> */}
      <Provider store={store}>
       <Head/>
-      <RouterProvider router={appRouter}/>
+      {/* <RouterProvider router={appRouter}/> */}
+      {/* <Body/> */}
+      <Outlet/>
      </Provider>
     </div>
   );
 }
 
-const appRouter=createBrowserRouter([
- {
-  path:"/",
-  element:<Body/>,
-  children:[
-    {
-      path:"/",
-      element:<MainContainer/>
-    },
-    {
-      path:"/watch",
-      element:<Watch/>
-    }
-  ]
- }
 
-])
 export default App;
 // Head
 // Body 

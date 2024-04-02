@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 const Head=()=>{
     const dispatch=useDispatch();
     const searchCache=useSelector(store=>store.search)
-    // const navigate=useNavigate();
+    const navigate=useNavigate();
 
     const [searchQuery,setSearchQuery]=useState("");
     const [suggestions,setSuggestions]=useState([]);
@@ -21,18 +21,10 @@ const Head=()=>{
         dispatch(toggleMenu());
     }
     const searchListHandler=()=>{
-        // navigate("/search?q="+searchQuery);
+        navigate("/search?q="+searchQuery);
         console.log("navigate To ",searchQuery);
-        if(searchQuery){
-            dispatch(toggleSearchQuery({isSearchQueryFlag:true,
-                isSearchQueryResult:searchQuery}))
-        }
-        else{
-            dispatch(toggleSearchQuery({isSearchQueryFlag:false,
-                isSearchQueryResult:""}))
-        }
+     
         
-
     }
     useEffect(()=>{
         // console.log(searchQuery);
